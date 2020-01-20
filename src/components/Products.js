@@ -1,15 +1,23 @@
 import React from "react"
 
-export default () => {
+export default props => {
+    console.log("Product props : ", props)
 
-    const [products, setProducts] = React.useState([])
-    const [filteredProducts, setFilteredProducts] = React.useState([])
 
     return(
-        <div>
-            <div>
-                Products here
-            </div>
+        <div className="row">
+            {props.products.map(product => {
+                return (
+                    <div className="col-md-4"> 
+                        <div className="thumbnail text-center">
+                            <a href={`#${product.id}`} onClick={props.handleAddToCart}>
+                                <img src={`/products/${product.sku}_2.jpg`} alt={product.title} />
+                <div>{product.title}</div>
+                            </a>
+                         </div>
+                    </div>
+                )
+            })}
         </div>
     )
 }

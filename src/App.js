@@ -18,13 +18,15 @@ function App() {
     axios.get("http://localhost:8000/products")
     .then(res => {
       console.log("res : ", res)
+      setProducts(res.data)
+      setFilteredProducts(res.data)
       return res.data
     })
     .catch(err => {
       console.log("err : ", err)
       return err
     })
-  })
+  }, [])
 
   return (
     <div className="container">
