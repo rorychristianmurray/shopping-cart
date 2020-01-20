@@ -1,4 +1,5 @@
 import React from "react"
+import util from "../util.js"
 
 export default props => {
     console.log("Product props : ", props)
@@ -15,7 +16,7 @@ export default props => {
                 <div>{product.title}</div>
                             </a>
                             <div>
-                                <div>{product.price}</div>
+                                <div>{util.formatCurrency(product.price)}</div>
                                 <button className="btn btn-primary"
                                 onCLick={e => props.handleAddToCart(e, product)}
                                 >Add to Cart </button>
