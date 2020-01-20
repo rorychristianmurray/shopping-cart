@@ -1,17 +1,28 @@
 import React from 'react';
 import './App.css';
 import Products from  "./components/Products"
+import Filter from  "./components/Filter"
 import axios from "axios"
 
 function App() {
 
   const [products, setProducts] = React.useState([])
   const [filteredProducts, setFilteredProducts] = React.useState([])
-  console.log("products : ", products)
-  console.log("filteredProducts : ", filteredProducts)
+  const [size, setSize] = React.useState([])
+  const [sort, setSort] = React.useState([])
+  // console.log("products : ", products)
+  // console.log("filteredProducts : ", filteredProducts)
 
   let handleAddToCart = () => {
-    console.log("its a function")
+    console.log("in handleAddToCart")
+  }
+
+  let handleChangeSize = () => {
+    console.log("in change size")
+  }
+
+  let handleChangeSort = () => {
+    console.log("in change sort")
   }
 
   React.useEffect(() => {
@@ -34,10 +45,9 @@ function App() {
       <hr />
       <div className="row">
         <div className="col-md-8">
+          <Filter size={size} sort={sort} handleChangeSize={handleChangeSize} handleChangeSort={handleChangeSort} count={filteredProducts.length} />
+          <hr/>
         <Products products={filteredProducts} handleAddToCart={handleAddToCart} />
-        </div>
-        <div className="col-md-4">
-        Content 2
         </div>
       </div>
     </div>
