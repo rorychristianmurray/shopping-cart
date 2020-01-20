@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Products from  "./components/Products"
+import axios from "axios"
 
 function App() {
 
@@ -12,6 +13,18 @@ function App() {
   let handleAddToCart = () => {
     console.log("its a function")
   }
+
+  React.useEffect(() => {
+    axios.get("http://localhost:8000/products")
+    .then(res => {
+      console.log("res : ", res)
+      return res.data
+    })
+    .catch(err => {
+      console.log("err : ", err)
+      return err
+    })
+  })
 
   return (
     <div className="container">
