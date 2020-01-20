@@ -8,10 +8,11 @@ function App() {
 
   const [products, setProducts] = React.useState([])
   const [filteredProducts, setFilteredProducts] = React.useState([])
-  const [size, setSize] = React.useState([])
-  const [sort, setSort] = React.useState([])
+  const [size, setSize] = React.useState()
+  const [sort, setSort] = React.useState()
   // console.log("products : ", products)
   // console.log("filteredProducts : ", filteredProducts)
+  console.log("filteredProducts.length : ", filteredProducts.length )
 
   let handleAddToCart = () => {
     console.log("in handleAddToCart")
