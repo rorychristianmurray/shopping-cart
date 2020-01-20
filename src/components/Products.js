@@ -14,6 +14,12 @@ export default props => {
                                 <img src={`/products/${product.sku}_2.jpg`} alt={product.title} />
                 <div>{product.title}</div>
                             </a>
+                            <div>
+                                <div>{product.price}</div>
+                                <button className="btn btn-primary"
+                                onCLick={e => props.handleAddToCart(e, product)}
+                                >Add to Cart </button>
+                            </div>
                          </div>
                     </div>
                 )
