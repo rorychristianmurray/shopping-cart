@@ -25,21 +25,21 @@ function App() {
     console.log("sort before : ", sort)
     setSort(e.target.value)
     console.log("sort after : ", sort)
-    listProducts()
+    listProducts(e.target.value)
   }
 
   let handleChangeSize = e => {
     console.log("in change size")
     console.log("e.target.value : ", e.target.value)
     setSize(e.target.value)
-    listProducts(e.target.value)
+    listProducts()
   }
 
   let listProducts = val => {
     console.log("sort in listProducts : ", sort)
     if (val !== '') {
       console.log("in filtered sort")
-      setFilteredProducts(products.sort((a, b)=>(sort === 'lowest' ? (a.price < b.price ? 1 : -1 ) : (a.price > b.price ? 1 : -1 ))))
+      setFilteredProducts(products.sort((a, b)=>(val === 'lowest' ? (a.price > b.price ? 1 : -1 ) : (a.price < b.price ? 1 : -1 ))))
     } if (val === '') {
       console.log("in default")
       console.log(products.sort((a,b) => (a.id < b.id ? 1 : -1)))
@@ -47,7 +47,6 @@ function App() {
       setFilteredProducts(products.sort((a,b) => (a.id < b.id ? 1 : -1)))
     }
 
-    // setProducts(products)
     
   }
 
