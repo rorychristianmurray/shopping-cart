@@ -9,7 +9,7 @@ function App() {
   const [products, setProducts] = React.useState([])
   const [filteredProducts, setFilteredProducts] = React.useState([])
   const [size, setSize] = React.useState()
-  const [sort, setSort] = React.useState()
+  const [sort, setSort] = React.useState("")
   // console.log("products : ", products)
   // console.log("filteredProducts : ", filteredProducts)
   console.log("filteredProducts.length : ", filteredProducts.length )
@@ -20,16 +20,27 @@ function App() {
 
   let handleChangeSort = e => {
     console.log("in change sort")
+    console.log("e : ", e)
     console.log("e.target.value : ", e.target.value)
+    console.log("sort before : ", sort)
     setSort(e.target.value)
+    console.log("sort after : ", sort)
     listProducts()
   }
 
-  let listProducts = () => {
-    if (sort !== '') {
+  let handleChangeSize = e => {
+    console.log("in change size")
+    console.log("e.target.value : ", e.target.value)
+    setSize(e.target.value)
+    listProducts(e.target.value)
+  }
 
+  let listProducts = val => {
+    console.log("sort in listProducts : ", sort)
+    if (val !== '') {
+      console.log("in filtered sort")
       setFilteredProducts(products.sort((a, b)=>(sort === 'lowest' ? (a.price < b.price ? 1 : -1 ) : (a.price > b.price ? 1 : -1 ))))
-    } else {
+    } if (val === '') {
       console.log("in default")
       console.log(products.sort((a,b) => (a.id < b.id ? 1 : -1)))
 
@@ -38,12 +49,6 @@ function App() {
 
     // setProducts(products)
     
-  }
-
-  
-
-  let handleChangeSize = () => {
-    console.log("in change size")
   }
 
   React.useEffect(() => {
