@@ -9,7 +9,7 @@ export default props => {
         <div className="row">
             {props.products.map(product => {
                 return (
-                    <div className="col-md-4"> 
+                    <div className="col-md-4" key={product.id}> 
                         <div className="thumbnail text-center">
                             <a href={`#${product.id}`} onClick={props.handleAddToCart}>
                                 <img src={`/products/${product.sku}_2.jpg`} alt={product.title} />
@@ -18,7 +18,7 @@ export default props => {
                             <div>
                                 <div>{util.formatCurrency(product.price)}</div>
                                 <button className="btn btn-primary"
-                                onCLick={e => props.handleAddToCart(e, product)}
+                                onClick={e => props.handleAddToCart(e, product)}
                                 >Add to Cart </button>
                             </div>
                          </div>

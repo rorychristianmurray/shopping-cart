@@ -18,12 +18,32 @@ function App() {
     console.log("in handleAddToCart")
   }
 
-  let handleChangeSize = () => {
-    console.log("in change size")
+  let handleChangeSort = e => {
+    console.log("in change sort")
+    console.log("e.target.value : ", e.target.value)
+    setSort(e.target.value)
+    listProducts()
   }
 
-  let handleChangeSort = () => {
-    console.log("in change sort")
+  let listProducts = () => {
+    if (sort !== '') {
+
+      setFilteredProducts(products.sort((a, b)=>(sort === 'lowest' ? (a.price < b.price ? 1 : -1 ) : (a.price > b.price ? 1 : -1 ))))
+    } else {
+      console.log("in default")
+      console.log(products.sort((a,b) => (a.id < b.id ? 1 : -1)))
+
+      setFilteredProducts(products.sort((a,b) => (a.id < b.id ? 1 : -1)))
+    }
+
+    // setProducts(products)
+    
+  }
+
+  
+
+  let handleChangeSize = () => {
+    console.log("in change size")
   }
 
   React.useEffect(() => {
